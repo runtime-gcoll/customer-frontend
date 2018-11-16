@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+/* Side-wide style options */
+html, body, section {
+    width: 100%;
+    height: 100%;
+}
+
+/* Specific Bootstrap overrides */
+.container-fluid {
+    padding: 0;
+    height: 100%;
+}

@@ -1,0 +1,35 @@
+form {
+    input, button {
+        margin: 5px;
+    }
+}
+
+#cover {
+    background: #8E44AD;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+#cover-caption {
+    width: 100%;
+}
+
+#searchForm {
+    width: 80%;
+}
+
+#searchBox {
+    width: 100%;
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#searchBtn {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
