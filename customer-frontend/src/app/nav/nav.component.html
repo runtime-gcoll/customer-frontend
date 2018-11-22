@@ -1,12 +1,46 @@
-<nav id="navigator" class="navbar-nav">
-    <!-- Header and link back to main page -->
-    <!-- TODO: Change href to NG routing link -->
-    <a class="navbar-brand" href="/">Swirl Theory</a>
-    <!-- Search form on the far right -->
-    <form class="form-inline">
-        <div class="form-group">
-            <!-- search -->
-            <!-- btn -->
-        </div>
-    </form>
+<nav id="navigator" class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img id="navbarIcon" src="assets/swirl.png" alt="Swirl Theory Icon" />
+        Swirl Theory
+    </a>
+    <button id="navbarExpandBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-ellipsis-h"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar list (on far left) -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    Home
+                    <!-- Some text that tells screenreaders which page we're currently on -->
+                    <!-- Disabled until we write some code to move it around based on the selected page -->
+                    <!-- <span class="sr-only">(current)</span> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <!-- Dropdown example -->
+            <!--
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            -->
+        </ul>
+        <!-- Search form (on far right) -->
+        <form class="form-inline my-2 my-lg-0">
+            <input id="searchBoxNav" class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+            <button id="searchBtnNav" class="btn btn-default my-2 my-sm-0" type="submit">
+                <span class="sr-only">Search</span>
+                <span id="searchIconNav" class="fa fa-search"></span>
+            </button>
+        </form>
+    </div>
 </nav>

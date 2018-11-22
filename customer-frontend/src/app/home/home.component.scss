@@ -1,3 +1,6 @@
+$main-color: #8E44AD;
+$highlight-color: yellow;
+
 form {
     input, button {
         margin: 5px;
@@ -5,7 +8,7 @@ form {
 }
 
 #cover {
-    background: #8E44AD;
+    background: $main-color;
     background-size: cover;
     height: 100%;
     text-align: center;
@@ -32,4 +35,8 @@ form {
     margin-left: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    #searchBtnIcon {
+        color: $highlight-color;
+    }
 }

@@ -1,9 +1,44 @@
+$main-color: purple;
+$highlight-color: yellow;
+
 #navigator {
-    background-color: purple;
+    background-color: $main-color;
+
+    #navbarIcon {
+        height: 30px;
+        width: 30px;
+    }
 
     a {
-        color: white;
+        color: $highlight-color;
         text-decoration: none;
         padding: 5px;
+    }
+
+    /* Change the colors of the dropdown expand button, otherwise it blends in to the background */
+    #navbarExpandBtn {
+        border: 3px solid $highlight-color;
+        border-radius: 25;
+
+        span {
+            color: $highlight-color;
+            vertical-align: center;
+        }
+    }
+
+    #searchBoxNav {
+        margin-right: 0 !important; /* Ugly! But I'm not sure where the more specific style for this element comes from yet */
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    #searchBtnNav {
+        margin-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;       
+
+        #searchIconNav {
+            color: $highlight-color;
+        }
     }
 }
