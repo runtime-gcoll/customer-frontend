@@ -1,18 +1,8 @@
-<!--
-<div class="card" style="width: 18rem;">
+<div id="productCard" class="card" style="width: 18rem;">
   <img class="card-img-top" src="{{ product.imageUrl }}" alt="{{ product.title }}">
   <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">{{ product.description }}</p>
-    <h5 class="card-title">{{ product.price }}</h5>
-  </div>
-</div>
--->
-<div id="productCard" class="card" style="width: 18rem;">
-  <img class="card-img-top" src="https://www.planwallpaper.com/static/images/magic-of-blue-universe-images.jpg" alt="Product Title">
-  <div class="card-body">
-    <h5 class="card-title">Product Title</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet...</p>
-    <h5 class="card-title">€200</h5>
+    <h5 class="card-title">€{{ product.price }}</h5>
   </div>
 </div>

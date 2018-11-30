@@ -1,6 +1,9 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
+// Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -11,6 +14,9 @@ import { RegisterComponent } from './register/register.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductsComponent } from './products/products.component';
+
+// Services
+import { ProductService } from './product.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +32,12 @@ import { ProductsComponent } from './products/products.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

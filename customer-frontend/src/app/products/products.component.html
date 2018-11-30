@@ -9,20 +9,12 @@
 -->
 
 <div class="row">
-
-<!-- Card deck containing product cards -->
-<!-- Just test dummies for now, will eventually be loop of data from db -->
-<div id="productsDeck" class="card-deck justify-content-center">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-</div>
+    <!-- Card deck containing product cards -->
+    <!-- Just test dummies for now, will eventually be loop of data from db -->
+    <div id="productsDeck" class="card-deck justify-content-center">
+        <ul>
+            <li *ngFor="let product of products">{{ product.title }}</li>
+        </ul>
+        <!--<app-product-card *ngFor></app-product-card>-->
+    </div>
 </div>
