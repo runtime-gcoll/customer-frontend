@@ -1,35 +1,41 @@
-<!-- FOR TESTING - show the modal via a button -->
-<button class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Open bob</button>
-
-<!-- Modal dialog containing login form -->
-<div id="loginModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-                <h5 class="modal-title">Log In to Swirl Theory</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <!-- Body -->
-            <div class="modal-body">
-                <!-- Form goes HERE -->
-                <form>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input class="form-control" type="text" name="username" placeholder="runtime" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input class="form-control" type="password" name="password" placeholder="big man bill is a dirty thief" />
-                    </div>
-                </form>
-            </div>
-            <!-- Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success">Login</button>
-            </div>
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 id="loginHeader">Log In to Swirl Theory</h2>
+        <div *ngIf="errorMessage" class="alert alert-warning">
+            {{ errorMessage }}
         </div>
+        <!-- Event bind the submission of the form to the onLogin() method -->
+        <!-- We also want to bind the form to a local var so we can check if the whole form is valid down in the Login button -->
+        <!-- We add novalidate do disable any validation logic that might be built into the user's browser in favour of rolling with our own Angular-based validation -->
+        <form (submit)="onLogin()" #loginForm="ngForm" novalidate>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <!-- ngModel is both data and event binding, so it just uses the syntax for both -->
+                <!-- This will populate the "creds" object with the data the user types *as they type it* -->
+                <input [(ngModel)]="creds.username" class="form-control" type="text" name="username" #username="ngModel" placeholder="runtime" required />
+                <!-- These text-danger divs get shown whenever there's a client-side validation error. -->
+                <!-- We implement some validation on the client side so that the user's processor is the one doing the heavy lifting, as opposed to continually spamming our backend with invalid data. This helps keep some of the load off of our server infrastructure. -->
+                <!-- There is, however, still validation on the backend, since client-side validation is very easily bypassed, but with these client-side safeguards in place, the server will only have to do that once for the majority of requests since most "normal" users *won't* bypass client-side validation, and if a malicious actor does bypass these and get an invalid request through, the backend won't just blindly accept whatever it's given. -->
+                <div *ngIf="username.touched && username.invalid" class="text-danger">
+                    Username is required!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <!-- Use ngModel again here -->
+                <input [(ngModel)]="creds.password" class="form-control" type="password" name="password" placeholder="https://www.keepassx.org/" #password="ngModel" required />
+                <!-- More validation -->
+                <div *ngIf="username.touched && password.invalid" class="text-danger">
+                    Password is required!
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- ng works with the regular form submission event stuff so nothing special is needed here, just the event handler in the form tag up top -->
+                <!-- Although, in addition to telling the user that they messed up when the data in the form is invalid, we're also going to disable the button, because otherwise they could just submit it anyway -->
+                <input type="submit" [disabled]="loginForm.invalid" class="form-control btn btn-success loginBtn" value="Login" />
+                <!-- Cancel just links back to home page -->
+                <a routerLink="/" class="form-control btn btn-danger loginBtn">Cancel</a>
+            </div>
+        </form>
     </div>
 </div>

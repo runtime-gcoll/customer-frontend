@@ -1,8 +1,19 @@
 <div id="productCard" class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{ product.imageUrl }}" alt="{{ product.title }}">
+  <img class="card-img-top" src="{{ product.imageUrl }}" alt="{{ product.productTitle }}">
   <div class="card-body">
-    <h5 class="card-title">{{ product.title }}</h5>
-    <p class="card-text">{{ product.description }}</p>
-    <h5 class="card-title">€{{ product.price }}</h5>
+  	<!-- Misc. product info -->
+    <h5 class="card-title">{{ product.productTitle }}</h5>
+    <p class="card-text">{{ product.productDescription }}</p>
+    <h5 class="card-title">€{{ product.cost }}</h5>
+  </div>
+  <div class="card-footer">
+  	<!-- If there are more than 100 items in stock, then display this regularly -->
+  	<p *ngIf="isNormal" class="text-info">{{ product.quantity }} in stock.</p>
+  	<!-- If there are between 100 and 30 items in stock, display as warning -->
+  	<p *ngIf="isWarn" class="text-warning">{{ product.quantity }} left in stock!</p>
+  	<!-- If there are less than 30 items in stock, display as danger -->
+  	<p *ngIf="isDanger" class="text-danger">Only {{ product.quantity }} left in stock!</p>
+  	<!-- Add to cart button, with icon. Text only shows on screen readers -->
+  	<button class="btn btn-success">Add To <span class="sr-only">Cart</span><span class="fa fa-shopping-cart"></span></button>
   </div>
 </div>

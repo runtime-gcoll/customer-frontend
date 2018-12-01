@@ -1,21 +1,9 @@
-/* Layout for the full-width centered filter control bar */
-/*
-#cover {
-    background: green;
-    background-size: cover;
-    height: 10%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-}
-
-#cover-caption {
-    width: 100%;
-}
-*/
-
 /* Layout options for the "deck" that displays product cards*/
 #productsDeck {
     margin-top: 20px; /* Stops it from hugging the filter control bar */
     width: 100%; /* Stops it from going over width and causing the page to scroll horizontally */
+}
+
+#noProductsWarning {
+	margin-top: 10px;
 }

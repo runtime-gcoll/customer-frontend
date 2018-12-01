@@ -1,45 +1,47 @@
-<!-- FOR TESTING - show the modal via a button -->
-<button class="btn btn-primary" data-toggle="modal" data-target="#registerModal">Open bob</button>
-
-<!-- Modal dialog containing login form -->
-<div id="registerModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-                <h5 class="modal-title">Register to Swirl Theory</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <!-- Body -->
-            <div class="modal-body">
-                <!-- Form goes HERE -->
-                <form>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input id="username" class="form-control" type="text" name="username" placeholder="runtime" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" class="form-control" type="password" name="password" placeholder="big man bill is a dirty thief" />
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm-password">Confirm Password</label>
-                        <input id="confirm-password" class="form-control" type="password" name="confirm-password" placeholder="big man bill is a dirty thief" />
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input id="termsAgreed" class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="termsAgreed">By ticking this box I agree to abide by the <a href="/route/to/ts/and/cs">Swirl Theory Terms and Conditions</a></label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success">Login</button>
-            </div>
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h3 id="registerHeader">Register to Swirl Theory</h3>
+        <!-- Error div -->
+        <div *ngIf="errorMessage" class="alert alert-warning">
+            {{ errorMessage }}
         </div>
+        <form (submit)="onRegister()" #registerForm="ngForm">
+            <!-- Username form bit -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input [(ngModel)]="creds.username" id="username" class="form-control" type="text" name="username" #username="ngModel" placeholder="runtime" required />
+            </div>
+            <!-- Username validation message -->
+            <div *ngIf="username.touched && username.invalid" class="text-danger">
+                Username is required!
+            </div>
+            <!-- Password form bit -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input [(ngModel)]="creds.password" id="password" class="form-control" type="password" name="password" #password="ngModel" placeholder="If you could pick something secure, that'd be great!" required />
+            </div>
+            <!-- Password validation message -->
+            <div *ngIf="password.touched && password.invalid" class="text-danger">
+                Password is required!
+            </div>
+            <!-- Password confirmation form but -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input [(ngModel)]="creds.confirmPassword" id="confirm-password" class="form-control" type="password" name="confirm-password" #confirmPassword="ngModel" placeholder="And don't forget it, because we can't reset it!" required />
+            </div>
+            <!-- Password confirmation validaiton message -->
+            <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="text-danger">
+                Password must be confirmed!
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input id="termsAgreed" class="form-check-input" type="checkbox" value="" required />
+                    <label class="form-check-label" for="termsAgreed">By ticking this box I agree to abide by the <a href="/tncs">Swirl Theory Terms and Conditions</a></label>
+                </div>
+            </div>
+            <div class="from-group">
+                <input type="submit" [disabled]="registerForm.invalid" class="btn btn-success" value="Login" />
+            </div>
+        </form>
     </div>
 </div>

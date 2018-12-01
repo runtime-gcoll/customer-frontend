@@ -1,20 +1,12 @@
-<!-- Full-width section containing filtering/sorting options -->
-<!-- 
-<section id="cover">
-    <div id="cover-caption">
-        <div id="container" class="container">
-        </div>
-    </div>
-</section>
--->
-
 <div class="row">
     <!-- Card deck containing product cards -->
-    <!-- Just test dummies for now, will eventually be loop of data from db -->
-    <div id="productsDeck" class="card-deck justify-content-center">
-        <ul>
-            <li *ngFor="let product of products">{{ product.title }}</li>
-        </ul>
-        <!--<app-product-card *ngFor></app-product-card>-->
+    <div *ngIf="thereAreProducts; else noProducts" id="productsDeck" class="card-deck justify-content-center">
+        <app-product-card *ngFor="let p of products" [thisProd]="p"></app-product-card>
     </div>
+    <ng-template #noProducts>
+    	<!-- Note: this will show up under any failure circumstance, such as not being able to connect to the backend. It's written to address the most likely cause provided that all the pieces of the puzzle are ticking along nicely. -->
+    	<div id="noProductsWarning" class="col-md-8 offset-md-2 alert alert-warning text-center">
+    		There are no products matching your search term. Maybe try something else?
+    	</div>
+    </ng-template>
 </div>
