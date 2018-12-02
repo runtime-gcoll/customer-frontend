@@ -8,9 +8,9 @@ import { map } from 'rxjs/operators';
 })
 export class AccountService {
   // The JWT we get from our API
-  private token: string;
+  private token: string = "";
   // When the token will expire
-  private tokenExpiration: Date;
+  private tokenExpiration: Date = null;
 
   constructor(private http: HttpClient) {}
 
@@ -23,7 +23,7 @@ export class AccountService {
   login(creds): Observable<boolean> {
     // arg1 is the URl to post to, arg2 is the JSON request body
 
-    return this.http.post("http://localhost:50334/api/account/login", creds).pipe(
+    return this.http.post("http://localhost:5000/api/account/login", creds).pipe(
       map((data: any) => {
         this.token = data.token;
         this.tokenExpiration = data.expiration;
@@ -33,10 +33,15 @@ export class AccountService {
   }
 
   register(creds): Observable<boolean> {
-    return this.http.post("http://localhost:50334/api/account/register", creds).pipe(
+    return this.http.post("http://localhost:5000/api/account/register", creds).pipe(
       map((data: any) => {
         return true;
       })
     );
+  }
+
+  logout() {
+    this.token = "";
+    this.tokenExpiration = null;
   }
 }

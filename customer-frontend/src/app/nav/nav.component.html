@@ -1,25 +1,46 @@
 <nav id="navigator" class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">
+    <!-- Icon and name on the far left, links back to the homepage -->
+    <a class="navbar-brand" routerLink="/">
         <img id="navbarIcon" src="assets/swirl.png" alt="Swirl Theory Icon" />
         Swirl Theory
     </a>
+    <!-- Button which expands/collapses the menu dropdown on smaller-width screens -->
     <button id="navbarExpandBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-ellipsis-h"></span>
     </button>
-
+    <!-- The collapsible navbar content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar list (on far left) -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    Home
-                    <!-- Some text that tells screenreaders which page we're currently on -->
-                    <!-- Disabled until we write some code to move it around based on the selected page -->
-                    <!-- <span class="sr-only">(current)</span> -->
+                <a class="nav-link" routerLink="products">
+                    Products
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+            <!-- Display Register/Login only if we're not logged in -->
+            <!-- Login page link -->
+            <li *ngIf="account.loginRequired" class="nav-item">
+                <a class="nav-link" routerLink="login">
+                    Login
+                </a>
+            </li>
+            <!-- Register page link -->
+            <li *ngIf="account.loginRequired" class="nav-item">
+                <a class="nav-link" routerLink="register">
+                    Register
+                </a>
+            </li>
+            <!-- Cart, also only displayed when logged in -->
+            <li *ngIf="account.loginRequired" class="nav-item">
+                <a routerLink="basket">
+                    Basket
+                </a>
+            </li>
+            <!-- Display "logout" only if we *are* logged in -->
+            <li *ngIf="!account.loginRequired" class="nav-item">
+                <a class="nav-link" (click)="logout()">
+                    Logout
+                </a>
             </li>
             <!-- Dropdown example -->
             <!--

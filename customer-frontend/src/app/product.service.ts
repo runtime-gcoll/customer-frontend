@@ -14,7 +14,7 @@ export class ProductService {
 
   // Get all of the products in the database
   getAllProducts(): Observable<boolean> {
-  	return this.http.get("http://localhost:50334/api/product/all").pipe(
+  	return this.http.get("http://localhost:5000/api/product/all").pipe(
   	  map((data: Product[]) => {
   	    this.products = data;
   	    return true;
@@ -23,7 +23,7 @@ export class ProductService {
 
   // Search for specific products
   searchProducts(searchTerm: string): Observable<boolean> {
-    return this.http.get("http://localhost:50334/api/product/search?searchTerm=" + searchTerm).pipe(
+    return this.http.get("http://localhost:5000/api/product/search?searchTerm=" + searchTerm).pipe(
       map((data: Product[]) => {
         this.products = data;
         return true;

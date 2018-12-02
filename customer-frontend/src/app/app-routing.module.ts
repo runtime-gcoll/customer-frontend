@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { BasketComponent } from './basket/basket.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'products', component: ProductsComponent },
     { path: 'product', component: ProductPageComponent },
+    { path: 'basket', component: BasketComponent },
     { path: 'tncs', component: TermsAndConditionsComponent },
 ];
 

@@ -18,6 +18,7 @@ import { ProductsComponent } from './products/products.component';
 
 // Services
 import { ProductService } from './product.service';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductService } from './product.service';
     RegisterComponent,
     TermsAndConditionsComponent,
     ProductPageComponent,
-    ProductsComponent
+    ProductsComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
