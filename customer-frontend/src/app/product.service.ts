@@ -9,6 +9,7 @@ import { Product } from './product';
 })
 export class ProductService {
   public products: Product[] = [];
+  public product: Product;
 
   constructor(private http: HttpClient) {}
 
@@ -26,6 +27,16 @@ export class ProductService {
     return this.http.get("http://localhost:5000/api/product/search?searchTerm=" + searchTerm).pipe(
       map((data: Product[]) => {
         this.products = data;
+        return true;
+      })
+    );
+  }
+
+  // Get product by ID
+  getProductById(productId: number): Observable<boolean> {
+    return this.http.get("http://localhost:5000/api/product/" + productId).pipe(
+      map((data: Product) => {
+        this.product = data;
         return true;
       })
     );

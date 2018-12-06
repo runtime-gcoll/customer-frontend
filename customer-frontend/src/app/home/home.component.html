@@ -10,15 +10,14 @@
                     <h3 class="display-4">Swirl Theory</h3>
                     <div class="info-form">
                         <!-- The justify-content-center class does the vertical alignment, form-inline is for onelined forms -->
-                        <form action="" class="form-inline justify-content-center">
+                        <form (submit)="onSubmit()" class="form-inline justify-content-center">
                             <div id="searchForm" class="form-group">
                                 <label class="sr-only">Search</label>
-                                <input id="searchBox" type="search" class="form-control" placeholder="Search...">
+                                <input [(ngModel)]="searchTerm" name="searchTerm" id="searchBox" type="search" class="form-control" placeholder="Search...">
                             </div>
-                            <button id="searchBtn" type="submit" class="btn btn-default">
-                                <span class="sr-only">Search</span>
-                                <span id="searchBtnIcon" class="fa fa-search"></span>
-                            </button>
+                            <input id="searchBtn" type="submit" class="btn btn-default" value="Search" />
+                                <!--<span class="sr-only">Search</span>-->
+                                <!--<span id="searchBtnIcon" class="fa fa-search"></span>-->
                         </form>
                     </div>
                     <br>

@@ -19,8 +19,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     // Get the queryString for search term
-    this.route.queryParams.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.searchTerm = params["searchTerm"];
+      console.log(this.searchTerm);
     });
 
     // If there's no search term specified then just display all the products

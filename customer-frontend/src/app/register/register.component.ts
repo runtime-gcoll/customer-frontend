@@ -10,7 +10,7 @@ import { AccountService } from '../account.service';
 export class RegisterComponent implements OnInit {
   // RegisterDTO in JSON
   public creds = {
-  	username: "",
+  	email: "",
   	password: "",
   	confirmPassword: ""
   }

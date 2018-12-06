@@ -9,14 +9,14 @@
         <!-- We add novalidate do disable any validation logic that might be built into the user's browser in favour of rolling with our own Angular-based validation -->
         <form (submit)="onLogin()" #loginForm="ngForm" novalidate>
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="email">Email Address</label>
                 <!-- ngModel is both data and event binding, so it just uses the syntax for both -->
                 <!-- This will populate the "creds" object with the data the user types *as they type it* -->
-                <input [(ngModel)]="creds.username" class="form-control" type="text" name="username" #username="ngModel" placeholder="runtime" required />
+                <input [(ngModel)]="creds.email" class="form-control" type="text" name="email" #email="ngModel" placeholder="runtime" required />
                 <!-- These text-danger divs get shown whenever there's a client-side validation error. -->
                 <!-- We implement some validation on the client side so that the user's processor is the one doing the heavy lifting, as opposed to continually spamming our backend with invalid data. This helps keep some of the load off of our server infrastructure. -->
                 <!-- There is, however, still validation on the backend, since client-side validation is very easily bypassed, but with these client-side safeguards in place, the server will only have to do that once for the majority of requests since most "normal" users *won't* bypass client-side validation, and if a malicious actor does bypass these and get an invalid request through, the backend won't just blindly accept whatever it's given. -->
-                <div *ngIf="username.touched && username.invalid" class="text-danger">
+                <div *ngIf="email.touched && email.invalid" class="text-danger">
                     Username is required!
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <!-- Use ngModel again here -->
                 <input [(ngModel)]="creds.password" class="form-control" type="password" name="password" placeholder="https://www.keepassx.org/" #password="ngModel" required />
                 <!-- More validation -->
-                <div *ngIf="username.touched && password.invalid" class="text-danger">
+                <div *ngIf="password.touched && password.invalid" class="text-danger">
                     Password is required!
                 </div>
             </div>

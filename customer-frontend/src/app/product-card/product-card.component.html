@@ -2,7 +2,9 @@
   <img class="card-img-top" src="{{ product.imageUrl }}" alt="{{ product.productTitle }}">
   <div class="card-body">
   	<!-- Misc. product info -->
-    <h5 class="card-title">{{ product.productTitle }}</h5>
+    <a routerLink="/product/{{product.productId}}">
+      <h5 class="card-title">{{ product.productTitle }}</h5>
+    </a>
     <p class="card-text">{{ product.productDescription }}</p>
     <h5 class="card-title">€{{ product.cost }}</h5>
   </div>

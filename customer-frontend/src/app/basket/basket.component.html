@@ -1,12 +1,20 @@
 <!-- This functions pretty much exactly the same way as the products page, except it's only a list of the products that the user has added to their basket -->
 <div class="row">
+	<!--<h2>My Basket</h2>-->
 	<!-- Card deck containing product cards -->
-    <div *ngIf="thereAreProducts; else noProducts" id="productsDeck" class="card-deck justify-content-center">
+	<!--
+    <div *ngIf="thereAreBasketItems; else noBasketItems" id="productsDeck" class="card-deck justify-content-center">
         <app-product-card *ngFor="let p of products" [thisProd]="p"></app-product-card>
     </div>
-    <ng-template #noProducts>
+	-->
+
+	<ul *ngIf="thereAreBasketItems; else noBasketItems" id="productsDeck">
+    	<li *ngFor="let bi of basketItems">{{ bi.product.productTitle }}</li>
+    </ul>
+
+    <ng-template #noBasketItems>
     	<!-- Note: this will show up under any failure circumstance, such as not being able to connect to the backend. It's intended to be shown when there are no products in the user's basket. -->
-    	<div id="noProductsWarning" class="col-md-8 offset-md-2 alert alert-warning text-center">
+    	<div id="noBasketItemsWarning" class="col-md-8 offset-md-2 alert alert-warning text-center">
     		No products in cart. Try adding some <a routerLink="products">here</a>!
     	</div>
     </ng-template>

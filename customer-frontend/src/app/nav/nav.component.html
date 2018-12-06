@@ -31,7 +31,7 @@
                 </a>
             </li>
             <!-- Cart, also only displayed when logged in -->
-            <li *ngIf="account.loginRequired" class="nav-item">
+            <li *ngIf="!account.loginRequired" class="nav-item">
                 <a routerLink="basket">
                     Basket
                 </a>

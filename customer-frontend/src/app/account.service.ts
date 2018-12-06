@@ -8,7 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class AccountService {
   // The JWT we get from our API
-  private token: string = "";
+  // Needs to be public for access in other services (have public get func?)
+  public token: string = "";
   // When the token will expire
   private tokenExpiration: Date = null;
 
@@ -40,6 +41,8 @@ export class AccountService {
     );
   }
 
+  // There's nothing we need to do on the server side to "log out", we just stop
+  // sending the bearer token and it'll eventually time out
   logout() {
     this.token = "";
     this.tokenExpiration = null;

@@ -6,14 +6,14 @@
             {{ errorMessage }}
         </div>
         <form (submit)="onRegister()" #registerForm="ngForm">
-            <!-- Username form bit -->
+            <!-- Email address form bit -->
             <div class="form-group">
-                <label for="username">Username</label>
-                <input [(ngModel)]="creds.username" id="username" class="form-control" type="text" name="username" #username="ngModel" placeholder="runtime" required />
+                <label for="email">Email Address</label>
+                <input [(ngModel)]="creds.email" id="email" class="form-control" type="text" name="email" #email="ngModel" placeholder="runtime" required />
             </div>
-            <!-- Username validation message -->
-            <div *ngIf="username.touched && username.invalid" class="text-danger">
-                Username is required!
+            <!-- Email address validation message -->
+            <div *ngIf="email.touched && email.invalid" class="text-danger">
+                Email address is required!
             </div>
             <!-- Password form bit -->
             <div class="form-group">
